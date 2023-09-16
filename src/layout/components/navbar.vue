@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Place from "./place/index.vue";
 import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
@@ -40,6 +41,8 @@ const {
     <mixNav v-if="layout === 'mix'" />
 
     <div v-if="layout === 'vertical'" class="vertical-header-right">
+      <!-- 统计服务区 -->
+      <Place />
       <!-- 菜单搜索 -->
       <Search />
       <!-- 通知 -->

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Place from "../place/index.vue";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import SidebarItem from "./sidebarItem.vue";
@@ -55,6 +56,8 @@ nextTick(() => {
       />
     </el-menu>
     <div class="horizontal-header-right">
+      <!-- 统计服务区 -->
+      <Place />
       <!-- 菜单搜索 -->
       <Search />
       <!-- 通知 -->
