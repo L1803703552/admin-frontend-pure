@@ -69,18 +69,24 @@ setOptions({
     {
       name: "小型车",
       type: "line",
+      symbolSize: 5,
+      symbol: "circle",
       smooth: true,
       data: [15, 8, 24, 16, 35, 4, 14, 18]
     },
     {
       name: "大客车",
       type: "line",
+      symbolSize: 5,
+      symbol: "circle",
       smooth: true,
       data: [50, 86, 35, 47, 3, 37, 45, 22]
     },
     {
       name: "危化品",
       type: "line",
+      symbolSize: 5,
+      symbol: "circle",
       smooth: true,
       data: [5, 87, 38, 4, 30, 7, 77, 2]
     }

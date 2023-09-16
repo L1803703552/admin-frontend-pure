@@ -93,6 +93,7 @@ setTimeout(() => {
 
         <!-- 剩余车位 -->
         <el-col
+          class="mb-[2vh]"
           v-motion
           :initial="{
             opacity: 0,
@@ -123,9 +124,18 @@ setTimeout(() => {
                     :gutter="24"
                     style="align-items: center; margin: 5px 0"
                   >
-                    <el-col :span="3" style="font-size: 12px"> 大型车 </el-col>
-                    <el-col :span="21">
-                      <el-progress :percentage="200 / 25">
+                    <el-col
+                      :xs="9"
+                      :sm="9"
+                      :md="6"
+                      :lg="6"
+                      :xl="3"
+                      style="font-size: 12px"
+                    >
+                      大型车
+                    </el-col>
+                    <el-col :xs="15" :sm="15" :md="18" :lg="18" :xl="21">
+                      <el-progress :stroke-width="10" :percentage="200 / 25">
                         <el-text>2/25</el-text>
                       </el-progress>
                     </el-col>
@@ -134,9 +144,18 @@ setTimeout(() => {
                     :gutter="24"
                     style="align-items: center; margin: 5px 0"
                   >
-                    <el-col :span="3" style="font-size: 12px"> 小型车 </el-col>
-                    <el-col :span="21">
-                      <el-progress :percentage="0 / 110">
+                    <el-col
+                      :xs="9"
+                      :sm="9"
+                      :md="6"
+                      :lg="6"
+                      :xl="3"
+                      style="font-size: 12px"
+                    >
+                      小型车
+                    </el-col>
+                    <el-col :xs="15" :sm="15" :md="18" :lg="18" :xl="21">
+                      <el-progress :stroke-width="10" :percentage="0 / 110">
                         <el-text>0/110</el-text>
                       </el-progress>
                     </el-col>
@@ -145,14 +164,23 @@ setTimeout(() => {
                     :gutter="24"
                     style="align-items: center; margin: 5px 0"
                   >
-                    <el-col :span="3" style="font-size: 12px"> 危化品 </el-col>
-                    <el-col :span="21">
-                      <el-progress :percentage="0">
+                    <el-col
+                      :xs="9"
+                      :sm="9"
+                      :md="6"
+                      :lg="6"
+                      :xl="3"
+                      style="font-size: 12px"
+                    >
+                      危化品
+                    </el-col>
+                    <el-col :xs="15" :sm="15" :md="18" :lg="18" :xl="21">
+                      <el-progress :stroke-width="10" :percentage="0">
                         <el-text>0/0</el-text>
                       </el-progress>
                     </el-col>
                   </el-row>
-                  <h4>24小时车位使用率</h4>
+                  <h4 class="mt-4">24小时车位使用率</h4>
                   <Line />
                 </el-scrollbar>
               </template>
@@ -164,6 +192,7 @@ setTimeout(() => {
       <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" style="padding: 0">
         <!-- 特殊车辆 -->
         <el-col
+          class="mb-[2vh]"
           v-motion
           :initial="{
             opacity: 0,
@@ -203,13 +232,13 @@ setTimeout(() => {
                             :key="inx"
                             :i="num"
                             :blur="inx"
-                            :delay="inx / 2"
+                            :delay="inx / 4"
                           />
                         </ul>
                       </el-descriptions-item>
                       <el-descriptions-item label="当前在区车辆（辆）" />
                     </el-descriptions>
-                    <el-descriptions :column="3" size="small">
+                    <el-descriptions direction="vertical" :column="3">
                       <el-descriptions-item label="等待登记">
                         0
                       </el-descriptions-item>
@@ -238,13 +267,13 @@ setTimeout(() => {
                             :key="inx"
                             :i="num"
                             :blur="inx"
-                            :delay="inx / 2"
+                            :delay="inx / 4"
                           />
                         </ul>
                       </el-descriptions-item>
                       <el-descriptions-item label="当前在区车辆（辆）" />
                     </el-descriptions>
-                    <el-descriptions :column="3" size="small">
+                    <el-descriptions direction="vertical" :column="3">
                       <el-descriptions-item label="小客车">
                         35
                       </el-descriptions-item>
@@ -322,6 +351,7 @@ setTimeout(() => {
 
         <!-- 事件 -->
         <el-col
+          class="mb-[2vh]"
           v-motion
           :initial="{
             opacity: 0,
