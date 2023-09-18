@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import TypeIt from "@/components/ReTypeit";
-import Line from "./components/Line.vue";
-import { ReboundCountTo } from "@/components/ReCountTo";
+import Traffic from "./components/Traffic.vue";
+import ParkSpace from "./components/ParkSpace.vue";
+import Special from "./components/Special.vue";
+import Passenger from "./components/Passenger.vue";
+import Event from "./components/Event.vue";
 defineOptions({
   name: "Welcome"
 });
@@ -34,7 +37,7 @@ setTimeout(() => {
             }
           }"
         >
-          <el-card shadow="never" style="height: 42vh">
+          <el-card shadow="never" style="height: 37vh">
             <template #header>
               <TypeIt
                 :className="'type-it2'"
@@ -45,46 +48,8 @@ setTimeout(() => {
             </template>
             <el-skeleton animated :rows="6" :loading="loading">
               <template #default>
-                <el-scrollbar height="30vh">
-                  <el-descriptions
-                    title="今日入区（车次）"
-                    direction="vertical"
-                    :column="2"
-                    border
-                    size="small"
-                    class="mb-[2vh]"
-                  >
-                    <el-descriptions-item label="小客车"
-                      >1208</el-descriptions-item
-                    >
-                    <el-descriptions-item label="大客车"
-                      >39</el-descriptions-item
-                    >
-                    <el-descriptions-item label="危化品"
-                      >15</el-descriptions-item
-                    >
-                    <el-descriptions-item label="其他"
-                      >768</el-descriptions-item
-                    >
-                  </el-descriptions>
-                  <el-descriptions
-                    title="当前在区车辆（辆）"
-                    direction="vertical"
-                    :column="2"
-                    border
-                    size="small"
-                  >
-                    <el-descriptions-item label="小客车"
-                      >456</el-descriptions-item
-                    >
-                    <el-descriptions-item label="大客车"
-                      >0</el-descriptions-item
-                    >
-                    <el-descriptions-item label="危化品"
-                      >2</el-descriptions-item
-                    >
-                    <el-descriptions-item label="其他">98</el-descriptions-item>
-                  </el-descriptions>
+                <el-scrollbar height="27vh">
+                  <Traffic />
                 </el-scrollbar>
               </template>
             </el-skeleton>
@@ -107,7 +72,7 @@ setTimeout(() => {
             }
           }"
         >
-          <el-card shadow="never" style="height: 42vh">
+          <el-card shadow="never" style="height: 47vh">
             <template #header>
               <TypeIt
                 :className="'type-it3'"
@@ -118,70 +83,8 @@ setTimeout(() => {
             </template>
             <el-skeleton animated :rows="6" :loading="loading">
               <template #default>
-                <el-scrollbar height="30vh">
-                  <h4>当前剩余</h4>
-                  <el-row
-                    :gutter="24"
-                    style="align-items: center; margin: 5px 0"
-                  >
-                    <el-col
-                      :xs="9"
-                      :sm="9"
-                      :md="6"
-                      :lg="6"
-                      :xl="3"
-                      style="font-size: 12px"
-                    >
-                      大型车
-                    </el-col>
-                    <el-col :xs="15" :sm="15" :md="18" :lg="18" :xl="21">
-                      <el-progress :stroke-width="10" :percentage="200 / 25">
-                        <el-text>2/25</el-text>
-                      </el-progress>
-                    </el-col>
-                  </el-row>
-                  <el-row
-                    :gutter="24"
-                    style="align-items: center; margin: 5px 0"
-                  >
-                    <el-col
-                      :xs="9"
-                      :sm="9"
-                      :md="6"
-                      :lg="6"
-                      :xl="3"
-                      style="font-size: 12px"
-                    >
-                      小型车
-                    </el-col>
-                    <el-col :xs="15" :sm="15" :md="18" :lg="18" :xl="21">
-                      <el-progress :stroke-width="10" :percentage="0 / 110">
-                        <el-text>0/110</el-text>
-                      </el-progress>
-                    </el-col>
-                  </el-row>
-                  <el-row
-                    :gutter="24"
-                    style="align-items: center; margin: 5px 0"
-                  >
-                    <el-col
-                      :xs="9"
-                      :sm="9"
-                      :md="6"
-                      :lg="6"
-                      :xl="3"
-                      style="font-size: 12px"
-                    >
-                      危化品
-                    </el-col>
-                    <el-col :xs="15" :sm="15" :md="18" :lg="18" :xl="21">
-                      <el-progress :stroke-width="10" :percentage="0">
-                        <el-text>0/0</el-text>
-                      </el-progress>
-                    </el-col>
-                  </el-row>
-                  <h4 class="mt-4">24小时车位使用率</h4>
-                  <Line />
+                <el-scrollbar height="35vh">
+                  <ParkSpace />
                 </el-scrollbar>
               </template>
             </el-skeleton>
@@ -218,76 +121,7 @@ setTimeout(() => {
             <el-skeleton animated :rows="13" :loading="loading">
               <template #default>
                 <el-scrollbar height="75vh">
-                  <div>
-                    <el-descriptions
-                      title="危化品"
-                      direction="vertical"
-                      :column="1"
-                      size="small"
-                    >
-                      <el-descriptions-item label="今日入园（车次）">
-                        <ul class="flex">
-                          <ReboundCountTo
-                            v-for="(num, inx) of [0, 0, 0, 0, 1, 5]"
-                            :key="inx"
-                            :i="num"
-                            :blur="inx"
-                            :delay="inx / 4"
-                          />
-                        </ul>
-                      </el-descriptions-item>
-                      <el-descriptions-item label="当前在区车辆（辆）" />
-                    </el-descriptions>
-                    <el-descriptions direction="vertical" :column="3">
-                      <el-descriptions-item label="等待登记">
-                        0
-                      </el-descriptions-item>
-                      <el-descriptions-item label="等待巡查">
-                        0
-                      </el-descriptions-item>
-                      <el-descriptions-item label="停留超时">
-                        0
-                      </el-descriptions-item>
-                      <el-descriptions-item label="24小时车次统计" :span="3">
-                        <Line />
-                      </el-descriptions-item>
-                    </el-descriptions>
-                  </div>
-                  <div>
-                    <el-descriptions
-                      title="新能源"
-                      direction="vertical"
-                      :column="1"
-                      size="small"
-                    >
-                      <el-descriptions-item label="今日入园（车次）">
-                        <ul class="flex">
-                          <ReboundCountTo
-                            v-for="(num, inx) of [0, 0, 0, 1, 2, 7]"
-                            :key="inx"
-                            :i="num"
-                            :blur="inx"
-                            :delay="inx / 4"
-                          />
-                        </ul>
-                      </el-descriptions-item>
-                      <el-descriptions-item label="当前在区车辆（辆）" />
-                    </el-descriptions>
-                    <el-descriptions direction="vertical" :column="3">
-                      <el-descriptions-item label="小客车">
-                        35
-                      </el-descriptions-item>
-                      <el-descriptions-item label="大客车">
-                        0
-                      </el-descriptions-item>
-                      <el-descriptions-item label="其他">
-                        0
-                      </el-descriptions-item>
-                      <el-descriptions-item label="24小时车次统计" :span="3">
-                        <Line />
-                      </el-descriptions-item>
-                    </el-descriptions>
-                  </div>
+                  <Special />
                 </el-scrollbar>
               </template>
             </el-skeleton>
@@ -312,7 +146,7 @@ setTimeout(() => {
             }
           }"
         >
-          <el-card shadow="never" style="height: 42vh">
+          <el-card shadow="never" style="height: 47vh">
             <template #header>
               <TypeIt
                 :className="'type-it4'"
@@ -323,26 +157,8 @@ setTimeout(() => {
             </template>
             <el-skeleton animated :rows="6" :loading="loading">
               <template #default>
-                <el-scrollbar height="30vh">
-                  <el-descriptions
-                    title="今日入区（人次）"
-                    direction="vertical"
-                    :column="3"
-                    size="small"
-                  >
-                    <el-descriptions-item label="主楼">
-                      0
-                    </el-descriptions-item>
-                    <el-descriptions-item label="女卫">
-                      0
-                    </el-descriptions-item>
-                    <el-descriptions-item label="男卫">
-                      0
-                    </el-descriptions-item>
-                    <el-descriptions-item label="24小时车次统计" :span="3">
-                      <Line />
-                    </el-descriptions-item>
-                  </el-descriptions>
+                <el-scrollbar height="39vh">
+                  <Passenger />
                 </el-scrollbar>
               </template>
             </el-skeleton>
@@ -365,7 +181,7 @@ setTimeout(() => {
             }
           }"
         >
-          <el-card shadow="never" style="height: 42vh">
+          <el-card shadow="never" style="height: 37vh">
             <template #header>
               <TypeIt
                 :className="'type-it5'"
@@ -376,8 +192,8 @@ setTimeout(() => {
             </template>
             <el-skeleton animated :rows="6" :loading="loading">
               <template #default>
-                <el-scrollbar height="30vh">
-                  <el-empty :image-size="120" />
+                <el-scrollbar height="29vh">
+                  <Event />
                 </el-scrollbar>
               </template>
             </el-skeleton>
@@ -387,8 +203,4 @@ setTimeout(() => {
     </el-row>
   </div>
 </template>
-<style lang="scss" scoped>
-h4 {
-  font-size: 14px;
-}
-</style>
+<style lang="scss" scoped></style>
